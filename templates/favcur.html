@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My Favorite Currency
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="row my-3">
+            
+            <div class="col-md-8">
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th class="text-start">Currency Symbol</th>
+                            <th class="text-start">Full Name </th>
+                            <th class="text-start">Value </th>
+                            <th class="text-md-center">Action </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for k,v in rates.items() %}
+                            <tr>
+                                <td class="text-start">{{ k }}</td>
+                                <td class="text-start">{{ cur_names[k] }}</td>
+                                <td class="text-start">{{ v }}</td>
+                                <td class="text-start">
+                                    <form action="/favcur" method="post">
+                                        {% if not k in prefer_currencies %}
+                                            <input name="addtofav" type="hidden" value="{{ k }}">
+                                            <button class="w-100 btn btn-outline-dark" type="submit" value="Add">Add</button>
+                                        {% else %}
+                                            <input name="removefromfav" type="hidden" value="{{ k }}">
+                                            <button class="w-100 btn btn-outline-danger" type="submit" value="Remove">Remove</button>
+                                        {% endif %}
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-4">
+                
+                <div class="border border-primary p-3 rounded">
+                    <h5>Add currencies to prefered list:</h5>
+                    <p>Please select the prefered currencies for accounting from the left table.</p>
+                    <p>Tips: use <kbd>ctrl</kbd> + <kbd>s</kbd> to search currency on this page.</p>
+                    <hr>
+                    <h5>Current prefered currencies:</h5>
+                    <form action="/favcur" method="post">
+                        {% for currency in prefer_currencies %}
+                        <input type="radio" id="{{ currency }}" name="base_currency" value="{{ currency }}">
+                        <label for="{{currency}}">{{ currency }}: {{ cur_names[currency] }}</label><br>
+                        {% endfor %}
+                        <p class="mt-3">Please select one currency of the above as the base currency for accounting</p>
+                        <button class="w-100 btn btn-outline-primary" type="submit">Set as the base</button>
+                    </form>                   
+                    <hr>
+                    <h5>Base currency for accounting:</h5>
+                    <p><small>Note: Not for the table of rates</small></p>
+                    <h4>{{ base_currency }}</h4>
+                </div>
+                
+                
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

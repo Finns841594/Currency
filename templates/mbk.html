@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My Bookkeeping
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="row my-3"> 
+
+            <!-- displaying recorded notes -->        
+            <div class="col-md-8">
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th class="text-start">Index</th>
+                            <th class="text-end">Amount</th>
+                            <th class="text-start">Currency</th>
+                            <th class="text-center">Date</th>
+                            <th class="text-start">Option</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in history %}
+                        <tr>
+                            <td class="text-start">{{ record[0] }}</th>
+                            <td class="text-end">{{ record[1] }}</th>
+                            <td class="text-start">{{ record[2] }}</th>
+                            <td class="text-center">{{ record[3] }}</th>
+                                <td>
+                                    <form action="/mbk" method="post">
+                                            <input name="remove" type="hidden" value="{{ record[0] }}">
+                                            <input class="btn btn-outline-dark" type="submit" name="remove_item" value="Remove">            
+                                    </form>
+                                </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Recording new notes -->
+            <div class="col-md-3">
+
+                <form action="/mbk" method="post" class="form-horizontal" role="form">
+
+                    <div class="form-group">
+                        <label for="amount" class="control-label"><h6 class="mb-3 mt-3">Amount of money:</h6></label>
+                        <input class="form-control mb-3" autofocus id="amount" name="amount" placeholder="Amount" type="number" step=0.01 required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="currency" class="control-label"><h6 class="mb-3 mt-3">Choose the currency and date:</h6></label><br>
+                        {% if not prefer_currencies %}
+                            <p class="alert alert-primary">Note: Please choose the prefered currencies for the accounting at the "Preferences" page first ;)</p>
+                        {% endif %}
+                        <select class="form-control mb-3" name="currency" id="currency" required><br>
+                            <option disabled selected><h6>Currency</h6></option>
+                            {% for currency in prefer_currencies %}
+                                <option value="{{ currency }}">{{ currency }}</option>
+                            {% endfor %}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date" class="control-label"><h6>Dates(if not selected, record as today):</h6></label><br>
+                        <input class="form-control" id="date" name="date" type="date">
+                    </div>
+
+                    <div class="form-group mt-4 mb-3">
+                        <button class="w-100 btn btn-lg btn-outline-primary" type="submit">Record</button>
+                    </div>
+                </form>
+
+            <!-- caculate sum based on one currency -->
+            <hr>
+            <h3 class="text-end">Current sum: <br> {{ sum }} {{ base_currency }}</h3>
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

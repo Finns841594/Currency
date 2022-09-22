@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="row my-3">
+
+            <div class="col-md-8">
+
+                <div class="mb-3">
+                    <h4 class="mt-3 mb-3">Exchange rates of today</h4>
+                    <p>The following table of rates is based on <b>USD</b> of the date <b>{{ today }}</b></p>
+                </div>
+
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th class="text-start">Currency Symbol</th>
+                            <th class="text-start">Full Name </th>
+                            <th class="text-start">Value </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for k,v in rates.items() %}
+                            <tr>
+                                <td class="text-start">{{ k }}</td>
+                                <td class="text-start">{{ cur_names[k] }}</td>
+                                <td class="text-start">{{ v }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-4">
+                <!-- {% if session["user_id"] %}
+                    <p>Welcome, {{ session["user_name"] }}.</p>
+                    <hr>
+                {% endif %} -->
+                <div>
+                    <h4 class="mt-3 mb-3">How to use this website</h4>
+                    <hr>
+                    <ol>
+                        <li>Sign up and then log in;</li>
+                        <li>Choose the currencies at the "Preferences" page;</li>
+                        <li>Start accounting at the "My Bookkeeping" page!</li>
+                    </ol>
+                </div> 
+
+                <div class="mt-5 mb-5">
+                    <h4 class="mt-3 mb-3">Comming Update: <small>Rates table based on users base_currency preference</small></h4>
+                    <hr>
+                    <p>Currently I got all the exchange rates from Open Exchange Rates with free tier services, which I can only get the rates based on USD. In that case, I need to change the frame to make it possible to show rates based on different currencies</p>
+                </div> 
+                
+                <div class="mt-5 mb-5">
+                    <h4 class="mt-3 mb-3">Welcome to contact me!</h4>
+                    <hr>
+                    <p>If you have any question or suggestion, you are welcome to email me!</p>
+                    <p>Address: <a href = "yangfengforwork@outlook.com">yangfengforwork@outlook.com</a></p>
+                </div> 
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
