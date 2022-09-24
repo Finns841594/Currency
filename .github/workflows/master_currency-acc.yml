@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'currency-acc'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2DFEC414239347038C21C9CE7C9FF0B1 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_811FE5D5E1E541AF818D122C652AFE86 }}
