@@ -5,9 +5,10 @@ from psycopg2 import sql
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 import requests
-import urllib.parse
 from datetime import date as datef
 from decimal import *
+import os
+from dotenv import load_dotenv
 
 # Functions I wrote
 from cos_tools import *
@@ -27,7 +28,14 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Connect Postgresql
-conn = psycopg2.connect(database="currency", user = "postgres", password = "guess", host = "localhost", port = "5432")
+# conn = psycopg2.connect(database="currency", user = "postgres", password = "guess", host = "localhost", port = "5432")
+load_dotenv()
+DBNAME = os.getenv("DBNAME")
+DBHOST = os.getenv("DBHOST")
+DBUSER = os.getenv("DBUSER")
+DBPASS = os.getenv("DBPASS")
+API3 = os.getenv("API3")
+conn = psycopg2.connect(database=DBNAME, user = DBUSER, password = DBPASS, host = DBHOST, port = "5432")
 conn.autocommit = True 
 cursor = conn.cursor()
 
@@ -37,7 +45,8 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS users
                 username TEXT NOT NULL UNIQUE, 
                 hash TEXT NOT NULL, 
                 reg_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                prefer_currencies TEXT[]);''')
+                prefer_currencies TEXT[],
+                base_currency TEXT);''')
 
 cursor.execute('''CREATE TABLE IF NOT EXISTS exchangerates(
                 id SERIAL PRIMARY KEY NOT NULL UNIQUE,
@@ -190,6 +199,7 @@ def mbk():
     # Display saved informations
     cursor.execute(sql.SQL("SELECT * FROM {}").format(sql.Identifier(username)))
     history = cursor.fetchall()
+    today = str(datef.today())
 
     if request.method == "POST":
 
@@ -198,8 +208,7 @@ def mbk():
             amount = request.form.get("amount")
             currency = request.form.get("currency")
             # Make it possible that record without selecing the date
-            if not request.form.get("date"):
-                today = str(datef.today())
+            if not request.form.get("date"):                
                 get_rates_with_recoreding(today)
                 cursor.execute(sql.SQL("INSERT INTO {} (amount, currency) VALUES (%s, %s)").format(sql.Identifier(username)),(amount, currency))
             else:
@@ -223,7 +232,7 @@ def mbk():
     # Fomulate
     sum = Decimal(sum).quantize(Decimal('0.01')) 
 
-    return render_template("mbk.html",prefer_currencies=prefer_currencies, history=history, sum=sum, base_currency=base_currency)
+    return render_template("mbk.html",prefer_currencies=prefer_currencies, history=history, sum=sum, base_currency=base_currency, today=today)
 
 @app.route("/favcur", methods=["GET", "POST"])
 def favcur():

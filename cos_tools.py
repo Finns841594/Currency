@@ -1,12 +1,22 @@
 import requests
 import urllib.parse
 import psycopg2
-from psycopg2.extras import Json, DictCursor
+from psycopg2.extras import Json
+import os
+from dotenv import load_dotenv
+
+# Get environment variables
+load_dotenv()
+DBNAME = os.getenv("DBNAME")
+DBHOST = os.getenv("DBHOST")
+DBUSER = os.getenv("DBUSER")
+DBPASS = os.getenv("DBPASS")
+API3 = os.getenv("API3")
 
 
 def get_rates(date):
     # an alternative url: url = f"https://api.exchangerate-api.com/v4/latest/{currency}"
-    api3 = "67d26d4d99ca4efc97de2938062b1e8c"
+    api3 = API3
     url = f"https://openexchangerates.org/api/historical/{urllib.parse.quote_plus(date)}.json?app_id={urllib.parse.quote_plus(api3)}"
     response = requests.get(url)
     rates_info = response.json()
@@ -14,7 +24,7 @@ def get_rates(date):
 
 
 def get_rates_with_recoreding(date):
-    conn = psycopg2.connect(database="currency", user = "postgres", password = "guess", host = "localhost", port = "5432")
+    conn = psycopg2.connect(database=DBNAME, user = DBUSER, password = DBPASS, host = DBHOST, port = "5432")
     cursor = conn.cursor()
     conn.autocommit = True
 
@@ -38,7 +48,7 @@ def get_rates_with_recoreding(date):
         return rates
 
 def lookup_history_rates(currency, date):
-    conn = psycopg2.connect(database="currency", user = "postgres", password = "guess", host = "localhost", port = "5432")
+    conn = psycopg2.connect(database=DBNAME, user = DBUSER, password = DBPASS, host = DBHOST, port = "5432")
     cursor = conn.cursor()
     date = str(date)
     cursor.execute("select rates from exchangerates where date = %s;", (date,))

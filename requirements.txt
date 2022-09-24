@@ -1,4 +1,5 @@
 flask
 Flask-Session
 requests
-urllib
+psycopg2
+dotenv
