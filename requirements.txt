@@ -2,4 +2,4 @@ flask
 Flask-Session
 requests
 psycopg2
-dotenv
+python-dotenv
