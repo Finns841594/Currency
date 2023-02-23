@@ -94,10 +94,10 @@ And you can specify one main currency, so all the costs will be summed up into n
 
 ### Built With
 
-* [![Flask][[Flask]]][Flask-url]
-* [![PostgreSQL][[PostgreSQL]]][PostgreSQL-url]]
-* [![Psycopg][[Psycopg]]][Psycopg-url]]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+[Flask]
+[PostgreSQL]
+[Psycopg]
+[Bootstrap]
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -198,13 +198,8 @@ Project Link: [https://github.com/Finns841594/Currency](https://github.com/Finns
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/feng-yang-511361166
 [product-screenshot]: images/mainpage.png
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
 
-[Flask]: https://flask.palletsprojects.com/en/2.2.x/_images/flask-logo.png
-[Flask-url]: https://flask.palletsprojects.com/en/2.2.x/#
-[PostgreSQL]: https://www.postgresql.org/media/img/about/press/elephant.png
-[PostgreSQL-url]: https://www.postgresql.org
-
-[Psycopg]: https://pbs.twimg.com/profile_images/1152122059/psycopg-100_400x400.png
-[Psycopg-url]: https://www.psycopg.org
+[Bootstrap]: https://getbootstrap.com
+[Flask]: https://flask.palletsprojects.com/en/2.2.x/#
+[PostgreSQL]: https://www.postgresql.org
+[Psycopg]: https://www.psycopg.org
