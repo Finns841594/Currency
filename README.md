@@ -94,10 +94,10 @@ And you can specify one main currency, so all the costs will be summed up into n
 
 ### Built With
 
-[Flask]
-[PostgreSQL]
-[Psycopg]
-[Bootstrap]
+* [Flask],
+* [PostgreSQL],
+* [Psycopg],
+* [Bootstrap]
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -175,9 +175,7 @@ Project Link: [https://github.com/Finns841594/Currency](https://github.com/Finns
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
-* []()
+* This project is inspired by [CS50](https://cs50.harvard.edu/x/2023/) online course, highly recommended. This is my final project for the course as well. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
