@@ -1,53 +1,210 @@
-# Multiy-Currency Accounting
+<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+<a name="readme-top"></a>
+<!--
+*** Thanks for checking out the Best-README-Template. If you have a suggestion
+*** that would make this better, please fork the repo and create a pull request
+*** or simply open an issue with the tag "enhancement".
+*** Don't forget to give the project a star!
+*** Thanks again! Now go create something AMAZING! :D
+-->
 
-#### Video Demo:  <URL https://youtu.be/zty-pZvRNQg>
 
-#### Description:
 
-##### 00. Why I develope this app
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-This is my final project for CS50 course. It's a web app based on Flask. I deployed it on Azure so you can visit it from the link [https://currency-acc.azurewebsites.net/](https://currency-acc.azurewebsites.net/).
 
-I have my monthly credit bill in many different currencies, for example, I have my Playstation account in Hongkongs store which trade in HKD, and my Nintendo Switch account in Japanese store which trade in JPY, I currently living in Sweden, daily cost is in SEK but some online services(for example, Steam :)) are in EUR and USD. Also, if I travel to some other countries in Schengen area, there are more different currencies will be in my bill. And in the end, I need to pay the bill in CNY, because my credit card is issued by a Chinese bank.
 
-So a tool that I want, is an accounting system. It can help me trace back my costs in different currencies. And by the end, caculate the sum of my cost.
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/Finns841594/Currency">
+    <img src="static/ico512.png" alt="Logo" width="80" height="80">
+  </a>
 
-You might say, does not your credit card bank have already done that for you? Yes, but I have another request: Compare the bill from the bank, which many fees are included, with the number which caculated without any fee included. In this way can I figure out which bank provide the "best" service.
+<h3 align="center">Multiy-Currency Accountinge</h3>
 
-##### 01. What is it for:
+  <p align="center">
+    project_description
+    <br />
+    <a href="https://github.com/Finns841594/Currency"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/Finns841594/Currency">View Demo</a>
+    ·
+    <a href="https://github.com/Finns841594/Currency/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/Finns841594/Currency/issues">Request Feature</a>
+  </p>
+</div>
 
-This app will help you record the cost in different currencies(as many as you want!), and exchange the cost from the currency that it happend, to the destinate currency that you nominated, by the exchange rates of the day when trade was happened.
 
-##### 02. If you want to modified:
 
-1. This app is based on Flask of Python.
-2. It uses Psycopg to manipulate PostgreSql database. A table to record information for all users, a table to record the exchange rates of each day that been searched for(reducing the usage of api), a table for a user to record the users accounting data.
-3. Page style is based on Boostrap 5.
-4. Exchange rates information is from [https://openexchangerates.org/](https://openexchangerates.org/).
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
-##### 03. If you want to test:
 
-1. You need to install all the required libararies which is listed in requirement.txt;
-2. You need to hava a api key from Open Exchange Rates, and set it as the envrionment variable "api3";
-3. You need to set following envrionment variable to access to a postgresql database:
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
+
+This app can help you record your costs in different currencies(as many as you want!).
+And you can specify one main currency, so all the costs will be summed up into nominated currency by the exchange rates of that day.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+### Built With
+
+* [![Flask][[Flask]]][Flask-url]
+* [![PostgreSQL][[PostgreSQL]]][PostgreSQL-url]]
+* [![Psycopg][[Psycopg]]][Psycopg-url]]
+* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+Visit the website and register a new account.
+
+
+### If you want to modify
+
+0. Set envrionment
+
+Install Python3 
+Install Python packages: Flask, Psycopg
+Install PostgreSql
+
+1. Get a free API Key at [https://openexchangerates.org/](https://openexchangerates.org/)
+2. Clone the repo
+   ```sh
+   git clone https://github.com/Finns841594/Currency.git
+   ```
+3. Set the following environment variable for exchange rate
+   `api3`
+4. Set the following environment variable for database
     1. "DBNAME"
     2. "DBHOST"
     3. "DBUSER"
     4. "DBPASS"
 
-##### 04. System Structure:
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-1. The main file is app.py, where you can see the structure of the whole web app.
-2. For the templates folder:
-    1. favcur.html is for the preferences for users to select the prefered currencies for accounting.
-    2. index.html is the main index page which showed the same information of exchange rates for unlogged-in users and logged-in users.
-    3. layout.html is the template for other html pages to reference.
-    4. login.html provide simple function for login.
-    5. mbk.html mbk is my bookkeeping, the main page where users can account.
-    6. register.html is for simple registering, no passward specific requirement.
-3. For the static folder:
-    1. favicon.ico is for the icon of this web app.
-    2. ico512.png is not referenced.
-    3. styles.css is emptyed because the page is styled by the bootstrap 5.
-4. flask_session is auto generated by the program, its ok to delete.
-5. cos_tools.py has three functions that I have written for the program. Will add more in the future development.
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Feng Yang - yangfengforwork@outlook.com
+
+Project Link: [https://github.com/Finns841594/Currency](https://github.com/Finns841594/Currency)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+
+* []()
+* []()
+* []()
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/Finns841594/Currency.svg?style=for-the-badge
+[contributors-url]: https://github.com/Finns841594/Currency/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Finns841594/Currency.svg?style=for-the-badge
+[forks-url]: https://github.com/Finns841594/Currency/network/members
+[stars-shield]: https://img.shields.io/github/stars/Finns841594/Currency.svg?style=for-the-badge
+[stars-url]: https://github.com/Finns841594/Currency/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Finns841594/Currency.svg?style=for-the-badge
+[issues-url]: https://github.com/Finns841594/Currency/issues
+[license-shield]: https://img.shields.io/github/license/Finns841594/Currency.svg?style=for-the-badge
+[license-url]: https://github.com/Finns841594/Currency/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/feng-yang-511361166
+[product-screenshot]: images/mainpage.png
+[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+[Bootstrap-url]: https://getbootstrap.com
+
+[Flask]: https://flask.palletsprojects.com/en/2.2.x/_images/flask-logo.png
+[Flask-url]: https://flask.palletsprojects.com/en/2.2.x/#
+[PostgreSQL]: https://www.postgresql.org/media/img/about/press/elephant.png
+[PostgreSQL-url]: https://www.postgresql.org
+
+[Psycopg]: https://pbs.twimg.com/profile_images/1152122059/psycopg-100_400x400.png
+[Psycopg-url]: https://www.psycopg.org
