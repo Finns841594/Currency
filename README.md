@@ -83,7 +83,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Currency Screen Shot][product-screenshot]](https://example.com)
+[![Bookkeeping Screen Shot][bookkeeping-screenshot]](https://example.com)
 
 This app can help you record your costs in different currencies(as many as you want!).
 And you can specify one main currency, so all the costs will be summed up into nominated currency by the exchange rates of that day.
@@ -196,6 +197,7 @@ Project Link: [https://github.com/Finns841594/Currency](https://github.com/Finns
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/feng-yang-511361166
 [product-screenshot]: images/mainpage.png
+[bookkeeping-screenshot]: images/bookkeeping.png
 
 [Bootstrap]: https://getbootstrap.com
 [Flask]: https://flask.palletsprojects.com/en/2.2.x/#
