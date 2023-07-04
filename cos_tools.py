@@ -18,6 +18,7 @@ def get_rates(date):
     # an alternative url: url = f"https://api.exchangerate-api.com/v4/latest/{currency}"
     api3 = API3
     url = f"https://openexchangerates.org/api/historical/{urllib.parse.quote_plus(date)}.json?app_id={urllib.parse.quote_plus(api3)}"
+    print("getting rates from api: ", url)
     response = requests.get(url)
     rates_info = response.json()
     return rates_info
@@ -36,6 +37,7 @@ def get_rates_with_recoreding(date):
     # if it is not, then get the rates by api and record it.
     if not date_check:
         rates_info = get_rates(date)
+        print("get rates from api", rates_info)
         rates = rates_info["rates"]
         cursor.execute("INSERT INTO exchangerates (date, rates) VALUES (%s, %s);", (date, Json(rates)))
         conn.close

@@ -2,3 +2,4 @@
 /.vscode
 /.env
 /flask_session
+.venv

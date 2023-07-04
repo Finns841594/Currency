@@ -1,5 +1,6 @@
 flask
-Flask-Session
+Flask_Session
 requests
-psycopg2
+psycopg2-binary
+# psycopg2
 python-dotenv
